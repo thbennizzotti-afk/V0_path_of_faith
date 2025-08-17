@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 81eac59be0f45524fbb58c40ff810c5a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/Common/Materials/MI_HairBraidWhite.mat
+  uploadId: 751555

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5bfabc1c8c1096d448de8e8d1803cc6d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2655988077585873504
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273199
+  packageName: 'G2: Knight 03'
+  packageVersion: 1.1
+  assetPath: Assets/QuangPhan/Common/DEMO/Presets/ClothHeavy.preset
+  uploadId: 699496

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 733c31f7c26b615409731ceb86c1d713
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2655988077585873504
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/Common/Layers/CharacterLayers.preset
+  uploadId: 751555

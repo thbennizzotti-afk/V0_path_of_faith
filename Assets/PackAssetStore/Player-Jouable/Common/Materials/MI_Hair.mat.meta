@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c272ec7fefb003d40974595a6ebf9e02
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/Common/Materials/MI_Hair.mat
+  uploadId: 751555

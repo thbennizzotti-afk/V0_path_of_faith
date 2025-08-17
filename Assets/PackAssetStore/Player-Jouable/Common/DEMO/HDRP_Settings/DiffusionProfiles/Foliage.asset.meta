@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6e94d1ca61d56c942aa5808e9a565692
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273199
+  packageName: 'G2: Knight 03'
+  packageVersion: 1.1
+  assetPath: Assets/QuangPhan/Common/DEMO/HDRP_Settings/DiffusionProfiles/Foliage.asset
+  uploadId: 699496

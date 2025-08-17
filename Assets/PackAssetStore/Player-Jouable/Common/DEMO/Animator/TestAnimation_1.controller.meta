@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4e5257bb02bfb854bbf49b83970e0419
+timeCreated: 1502451489
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273199
+  packageName: 'G2: Knight 03'
+  packageVersion: 1.1
+  assetPath: Assets/QuangPhan/Common/DEMO/Animator/TestAnimation_1.controller
+  uploadId: 699496

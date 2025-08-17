@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 192080dfdbe2559478bf9dffc3e0b393
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273199
+  packageName: 'G2: Knight 03'
+  packageVersion: 1.1
+  assetPath: Assets/QuangPhan/Common/Scrips/DawnCamera.cs
+  uploadId: 699496

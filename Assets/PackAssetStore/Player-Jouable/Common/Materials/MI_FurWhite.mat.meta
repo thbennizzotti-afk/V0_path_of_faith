@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cc7b79b3c4332a54eab2d88c17e607f9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/Common/Materials/MI_FurWhite.mat
+  uploadId: 751555

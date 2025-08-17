@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ce77ff15ddc778e4ea65a612dc01db55
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/Common/Materials/MI_EyesDemon.mat
+  uploadId: 751555

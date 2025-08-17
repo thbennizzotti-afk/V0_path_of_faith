@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e65723ddf7c80ee46b6324ab877d40c9
+timeCreated: 1502451489
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273199
+  packageName: 'G2: Knight 03'
+  packageVersion: 1.1
+  assetPath: Assets/QuangPhan/Common/DEMO/Animator/Expression2.controller
+  uploadId: 699496

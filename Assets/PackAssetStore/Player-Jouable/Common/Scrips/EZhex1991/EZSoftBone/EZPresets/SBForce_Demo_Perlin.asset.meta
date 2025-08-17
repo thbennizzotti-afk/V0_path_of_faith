@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f626e89618e44ca4d8750d37108d5578
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/Common/Scrips/EZhex1991/EZSoftBone/EZPresets/SBForce_Demo_Perlin.asset
+  uploadId: 751555

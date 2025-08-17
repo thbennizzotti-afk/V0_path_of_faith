@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 582adbd84082fdb4faf7cd4beb1ccd14
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273199
+  packageName: 'G2: Knight 03'
+  packageVersion: 1.1
+  assetPath: Assets/QuangPhan/Common/DEMO/HDRP_Settings/DawnHDRPSettings/DawnHDRPDefaultSettings.asset
+  uploadId: 699496

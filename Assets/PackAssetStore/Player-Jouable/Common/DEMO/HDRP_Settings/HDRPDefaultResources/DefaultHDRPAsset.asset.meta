@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e93c35b24eb03c74284e7dc0b755bfcc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273199
+  packageName: 'G2: Knight 03'
+  packageVersion: 1.1
+  assetPath: Assets/QuangPhan/Common/DEMO/HDRP_Settings/HDRPDefaultResources/DefaultHDRPAsset.asset
+  uploadId: 699496

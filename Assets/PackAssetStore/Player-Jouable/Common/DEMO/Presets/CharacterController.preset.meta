@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 680438301016d3042a8878d89e276d30
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273199
+  packageName: 'G2: Knight 03'
+  packageVersion: 1.1
+  assetPath: Assets/QuangPhan/Common/DEMO/Presets/CharacterController.preset
+  uploadId: 699496

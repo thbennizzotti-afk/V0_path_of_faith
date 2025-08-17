@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d146492440dd9f84296b8a1d48932228
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/Common/Scrips/EZhex1991/EZSoftBone/Runtime/EZhex1991.EZSoftBone.asmdef
+  uploadId: 751555

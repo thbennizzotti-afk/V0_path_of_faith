@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c7f4b09b7752a7d40921bba633f99f24
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 273199
+  packageName: 'G2: Knight 03'
+  packageVersion: 1.1
+  assetPath: Assets/QuangPhan/Common/Prefabs/Camera/DawnCamera.prefab
+  uploadId: 699496

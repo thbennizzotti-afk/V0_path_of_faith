@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99a35d39914d41d79a63dc2f4d23e0a, type: 3}
+  m_Name: ExplorationConfig_Default
+  m_EditorClassIdentifier: 
+  pitch: 45
+  baseDistance: 12
+  minDistance: 3
+  maxDistance: 30
+  zoomSpeedFollow: 10
+  orbitSpeed: 3000
+  followLerp: 2
+  freeMoveSpeed: 20
+  freeZoomSpeed: 20
+  freeStartHeight: 30
+  transitionSpeed: 12
+  snapRotationOnFree: 1
+  orbitHoldThreshold: 0.15
+  scrollDeadzone: 0.05
+  orbitDeadzone: 0.02
+  invertHorizontal: 0
+  invertVertical: 0
+  playerMoveSpeed: 5
+  clickHoldThreshold: 0.15
+  dragPixelThreshold: 6
+  rayMaxDistance: 1000
+  useNavMeshSample: 1
+  sampleMaxDistance: 8
+  areaMask: -1
+  debugRays: 0

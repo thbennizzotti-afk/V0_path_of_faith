@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6cad58e0076795a4e87b3fc1a1d43d60
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/G2_Archer/Scene/URP_BiRD.lighting
+  uploadId: 751555

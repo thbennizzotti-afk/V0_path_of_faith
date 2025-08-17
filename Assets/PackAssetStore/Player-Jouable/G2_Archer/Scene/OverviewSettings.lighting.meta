@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e44663ada1b2408498cbb638df18bf9e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/G2_Archer/Scene/OverviewSettings.lighting
+  uploadId: 751555

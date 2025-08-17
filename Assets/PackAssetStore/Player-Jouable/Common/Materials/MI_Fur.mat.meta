@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5b0a008a1b5a3fc4cae1f5b5d5d9a487
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318245
+  packageName: 'G2: Archer'
+  packageVersion: 1.0
+  assetPath: Assets/QuangPhan/Common/Materials/MI_Fur.mat
+  uploadId: 751555
