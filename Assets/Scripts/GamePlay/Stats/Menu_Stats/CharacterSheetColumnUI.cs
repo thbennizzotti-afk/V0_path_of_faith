@@ -26,8 +26,8 @@ public class CharacterSheetColumnUI : MonoBehaviour
     public Image backdrop;
 
     CharacterStats _stats;
-    System.Func<CharacterStats, Dictionary<PrimaryStat,int>> _getPendingFor;
-    System.Func<CharacterStats,int> _getRemainingPoints;
+    System.Func<CharacterStats, Dictionary<PrimaryStat, int>> _getPendingFor;
+    System.Func<CharacterStats, int> _getRemainingPoints;
     System.Action<CharacterStats, PrimaryStat> _requestAddPoint;
 
     public void SetupPlaceholder(string label = "Vide")
@@ -40,8 +40,8 @@ public class CharacterSheetColumnUI : MonoBehaviour
 
     public void Setup(
         CharacterStats stats,
-        System.Func<CharacterStats, Dictionary<PrimaryStat,int>> getPendingFor,
-        System.Func<CharacterStats,int> getRemainingPoints,
+        System.Func<CharacterStats, Dictionary<PrimaryStat, int>> getPendingFor,
+        System.Func<CharacterStats, int> getRemainingPoints,
         System.Action<CharacterStats, PrimaryStat> requestAddPoint)
     {
         isPlaceholder = false;
@@ -57,26 +57,26 @@ public class CharacterSheetColumnUI : MonoBehaviour
 
     void SetInteractable(bool on)
     {
-        if (backdrop) backdrop.color = on ? Color.white : new Color(1f,1f,1f,0.25f);
-        if (plusHP)  plusHP.interactable  = on;
+        if (backdrop) backdrop.color = on ? Color.white : new Color(1f, 1f, 1f, 0.25f);
+        if (plusHP) plusHP.interactable = on;
         if (plusATK) plusATK.interactable = on;
         if (plusDEF) plusDEF.interactable = on;
     }
 
     void BindButtons()
     {
-        if (plusHP)  { plusHP.onClick.RemoveAllListeners();  plusHP.onClick.AddListener(() => _requestAddPoint?.Invoke(_stats, PrimaryStat.Vitality)); }
+        if (plusHP) { plusHP.onClick.RemoveAllListeners(); plusHP.onClick.AddListener(() => _requestAddPoint?.Invoke(_stats, PrimaryStat.Vitality)); }
         if (plusDEF) { plusDEF.onClick.RemoveAllListeners(); plusDEF.onClick.AddListener(() => _requestAddPoint?.Invoke(_stats, PrimaryStat.Vitality)); }
         if (plusATK) { plusATK.onClick.RemoveAllListeners(); plusATK.onClick.AddListener(() => _requestAddPoint?.Invoke(_stats, PrimaryStat.Strength)); }
     }
 
     void UpdateTextsEmpty()
     {
-        if (hpText)   hpText.text   = "-";
-        if (apText)   apText.text   = "-";
-        if (mpText)   mpText.text   = "-";
-        if (atkText)  atkText.text  = "-";
-        if (defText)  defText.text  = "-";
+        if (hpText) hpText.text = "-";
+        if (apText) apText.text = "-";
+        if (mpText) mpText.text = "-";
+        if (atkText) atkText.text = "-";
+        if (defText) defText.text = "-";
         if (initText) initText.text = "-";
         if (pointsLeftText) pointsLeftText.text = "Points : 0";
     }
@@ -85,30 +85,33 @@ public class CharacterSheetColumnUI : MonoBehaviour
     {
         if (isPlaceholder || _stats == null) { UpdateTextsEmpty(); return; }
 
-        var pending = _getPendingFor?.Invoke(_stats) ?? new Dictionary<PrimaryStat,int>();
+        var pending = _getPendingFor?.Invoke(_stats) ?? new Dictionary<PrimaryStat, int>();
 
         if (nameText) nameText.text = _stats.gameObject.name;
 
         float hpMax = StatsPreview.Eval(_stats, StatType.HPMax, pending);
         float apMax = StatsPreview.Eval(_stats, StatType.APMax, pending);
         float mpMax = StatsPreview.Eval(_stats, StatType.MPMax, pending);
-        float atk   = StatsPreview.Eval(_stats, StatType.AttackPower, pending);
-        float def   = StatsPreview.Eval(_stats, StatType.Defense, pending);
-        float init  = StatsPreview.Eval(_stats, StatType.Initiative, pending);
+        float atk = StatsPreview.Eval(_stats, StatType.AttackPower, pending);
+        float def = StatsPreview.Eval(_stats, StatType.Defense, pending);
+        float init = StatsPreview.Eval(_stats, StatType.Initiative, pending);
 
-        if (hpText)   hpText.text   = $"HP : {Mathf.RoundToInt(hpMax)}";
-        if (apText)   apText.text   = $"AP : {Mathf.RoundToInt(apMax)}";
-        if (mpText)   mpText.text   = $"MP : {Mathf.RoundToInt(mpMax)}";
-        if (atkText)  atkText.text  = $"ATK : {Mathf.RoundToInt(atk)}";
-        if (defText)  defText.text  = $"DEF : {Mathf.RoundToInt(def)}";
+        if (hpText) hpText.text = $"HP : {Mathf.RoundToInt(hpMax)}";
+        if (apText) apText.text = $"AP : {Mathf.RoundToInt(apMax)}";
+        if (mpText) mpText.text = $"MP : {Mathf.RoundToInt(mpMax)}";
+        if (atkText) atkText.text = $"ATK : {Mathf.RoundToInt(atk)}";
+        if (defText) defText.text = $"DEF : {Mathf.RoundToInt(def)}";
         if (initText) initText.text = $"INIT : {Mathf.RoundToInt(init)}";
 
         int remaining = _getRemainingPoints?.Invoke(_stats) ?? 0;
         if (pointsLeftText) pointsLeftText.text = $"Points : {remaining}";
 
         bool canAdd = remaining > 0;
-        if (plusHP)  plusHP.interactable  = canAdd;
+        if (plusHP) plusHP.interactable = canAdd;
         if (plusATK) plusATK.interactable = canAdd;
         if (plusDEF) plusDEF.interactable = canAdd;
+        Debug.Log($"[SheetColumn] refresh {(isPlaceholder ? "placeholder" : _stats?.name)}");
+
     }
+    
 }
