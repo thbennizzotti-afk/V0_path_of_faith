@@ -19,7 +19,7 @@ namespace PathOfFaith.Gameplay.Stats
 
         [Header("Progression")]
         [Min(1)] public int level = 1;
-        [Min(0)] public int unspentAttributePoints = 0;
+        [Min(0)] public int unspentAttributePoints = 5;
 
         [Serializable]
         public struct Allocation { public PrimaryStat stat; public int points; }
