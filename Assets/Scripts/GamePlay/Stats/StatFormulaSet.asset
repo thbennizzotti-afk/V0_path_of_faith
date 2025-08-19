@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: StatFormulaSet
   m_EditorClassIdentifier: 
   baseHP: 60
-  hpPerVitality: 12
+  hpPerVitality: 10
   hpPerLevel: 5
   baseAP: 6
   baseMP: 6
-  atkPerStrength: 2.5
-  defPerVitality: 1.5
+  atkPerStrength: 7
+  defPerAgility: 7
   baseInitiative: 8
   initPerAgility: 1
   critPerAgility: 0.0025
