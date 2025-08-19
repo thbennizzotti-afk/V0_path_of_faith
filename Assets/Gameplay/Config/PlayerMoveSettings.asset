@@ -15,7 +15,7 @@ MonoBehaviour:
   speed: 5
   acceleration: 16
   angularSpeed: 1080
-  agentHandlesRotation: 0
+  agentHandlesRotation: 1
   manualRotationSpeedDeg: 1440
   groundMask:
     serializedVersion: 2
