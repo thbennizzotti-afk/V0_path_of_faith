@@ -1,8 +1,9 @@
 {
-    "name": "PathOfFaith.Fondation.Save",
+    "name": "PathOfFaith.App",
     "rootNamespace": "",
     "references": [
-        "GUID:5cdad36b7eb6a4cf89bc8313a753d55c"
+        "GUID:5cdad36b7eb6a4cf89bc8313a753d55c",
+        "GUID:9ea220b702d004836935504151c31d8c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

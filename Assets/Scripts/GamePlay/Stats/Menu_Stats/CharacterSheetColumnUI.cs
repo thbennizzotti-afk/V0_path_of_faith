@@ -7,6 +7,10 @@ using UnityEngine.UI;
 using TMPro;
 using PathOfFaith.Gameplay.Stats;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 [DisallowMultipleComponent]
 public class CharacterSheetColumnUI : MonoBehaviour
 {
@@ -267,7 +271,7 @@ public class CharacterSheetColumnUI : MonoBehaviour
             if (b.targetGraphic) b.targetGraphic.raycastTarget = false;
             b.interactable = false;
             Debug.Log($"[SheetColumn] Doublon bouton supprimé dans {rowName}: {b.name}");
-            Destroy(b.gameObject);
+            SafeDestroy(b.gameObject); // <= safe en Éditeur et en Play
         }
 
         keep.transform.SetAsLastSibling();
@@ -283,6 +287,36 @@ public class CharacterSheetColumnUI : MonoBehaviour
         EnsureButtonUsable(plusDEF, plusButtonSize, plusFontPercent);
         SanitizeAllRows();
     }
-    void OnValidate() { if (Application.isPlaying) ApplyStyleNow(); }
+
+    private void OnValidate()
+    {
+        // En Éditeur, applique la mise en forme ; SafeDestroy utilise Destroy (planifié) pour éviter l'erreur
+        if (!Application.isPlaying)
+            ApplyStyleNow();
+    }
 #endif
+
+    // -------- Helpers destruction sûre --------
+    private static void SafeDestroy(UnityEngine.Object obj)
+    {
+        if (obj == null) return;
+
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            // Ne modifie jamais un Prefab Asset depuis OnValidate
+            if (PrefabUtility.IsPartOfPrefabAsset(obj))
+            {
+                Debug.LogWarning($"[SheetColumn] Skip destroy on prefab asset: {obj.name}");
+                return;
+            }
+
+            // En Éditeur, Unity exige Destroy (et non DestroyImmediate) dans ces callbacks
+            UnityEngine.Object.Destroy(obj);
+            return;
+        }
+#endif
+        // En Play mode : destruction standard
+        UnityEngine.Object.Destroy(obj);
+    }
 }

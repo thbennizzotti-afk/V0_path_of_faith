@@ -1,25 +1,25 @@
-using PathOfFaith.Fondation.Core;
-
+// Assets/App/StartOptions.cs
 namespace PathOfFaith.App
 {
-    /// <summary>Choix du slot et intention New/Load au lancement.</summary>
+    /// <summary>
+    /// Transporte l’intention de chargement entre le Main Menu et la scène de jeu.
+    /// Aucune logique d’UI ni d’IO ici.
+    /// </summary>
     public static class StartOptions
     {
-        public static bool LoadOnStart { get; private set; }
-        public static string CurrentSlot { get; private set; } = "slot1";
+        public static bool HasPendingLoad => !string.IsNullOrEmpty(PendingSlot);
+        public static string PendingSlot { get; private set; }
 
-        public static void NewGame(string slot)
+        public static void RequestLoad(string slotId)
         {
-            LoadOnStart = false;
-            CurrentSlot = slot;
-            SaveContext.CurrentSlot = slot;   // <- met à jour le contexte visible par l’UI
+            PendingSlot = slotId;
         }
 
-        public static void LoadGame(string slot)
+        public static string Consume()
         {
-            LoadOnStart = true;
-            CurrentSlot = slot;
-            SaveContext.CurrentSlot = slot;   // <- idem
+            var s = PendingSlot;
+            PendingSlot = null;
+            return s;
         }
     }
 }
