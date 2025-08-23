@@ -1,17 +1,20 @@
 using UnityEngine;
-using PathOfFaith.Fondation.Core;
-using PathOfFaith.Save;
 
-namespace PathOfFaith.App
+/// <summary>
+/// Installer neutre : persiste simplement l'objet au-delà des changements de scène.
+/// On n'enregistre plus d'ISaveService ici (GameStartup lit directement le JSON).
+/// </summary>
+[DisallowMultipleComponent]
+public class SaveInstaller : MonoBehaviour
 {
-    /// <summary>Installe le SaveManager au boot.</summary>
-    public class SaveInstaller : MonoBehaviour
+    private static bool s_done;
+
+    void Awake()
     {
-        void Awake()
-        {
-            var mgr = new SaveManager();
-            ServiceLocator.Register<ISaveService>(mgr); // pour l'UI et GameStartup
-            ServiceLocator.Register(mgr);               // pour Register/Unregister des participants
-        }
+        if (s_done) { Destroy(gameObject); return; }
+
+        DontDestroyOnLoad(gameObject);
+        s_done = true;
+        Debug.Log("[SaveInstaller] Ready (noop, no service registration).");
     }
 }

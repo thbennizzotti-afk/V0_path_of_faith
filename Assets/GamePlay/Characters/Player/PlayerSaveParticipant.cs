@@ -1,30 +1,61 @@
+// Assets/GamePlay/Characters/Player/PlayerSaveParticipant.cs
 using UnityEngine;
 using UnityEngine.AI;
-using PathOfFaith.Save;
 using PathOfFaith.Fondation.Core;
+using PathOfFaith.Save;
 
-[DisallowMultipleComponent]
-public class PlayerSaveParticipant : MonoBehaviour, ISaveParticipant
+namespace PathOfFaith.Gameplay.Characters.Player
 {
-    void OnEnable()  { ServiceLocator.Get<SaveManager>().Register(this); }
-    void OnDisable() { if (ServiceLocator.TryGet<SaveManager>(out var m)) m.Unregister(this); }
-
-    public void Capture(GameSave save)
+    [DisallowMultipleComponent]
+    public class PlayerSaveParticipant : MonoBehaviour, ISaveParticipant
     {
-        if (save.player == null) save.player = new PlayerSave();
-        var t = transform;
-        save.player.x = t.position.x; save.player.y = t.position.y; save.player.z = t.position.z;
-        var q = t.rotation; save.player.rx = q.x; save.player.ry = q.y; save.player.rz = q.z; save.player.rw = q.w;
-    }
+        [SerializeField] Transform target;
+        [SerializeField] bool useNavMeshAgentWarp = true;
 
-    public void Apply(GameSave save)
-    {
-        if (save.player == null) return;
-        var pos = new Vector3(save.player.x, save.player.y, save.player.z);
-        var rot = new Quaternion(save.player.rx, save.player.ry, save.player.rz, save.player.rw);
+        NavMeshAgent _agent;
+        SaveManager  _mgr;
 
-        var agent = GetComponent<NavMeshAgent>();
-        if (agent && agent.enabled) agent.Warp(pos); else transform.position = pos;
-        transform.rotation = rot;
+        void Awake()
+        {
+            if (!target) target = transform;
+            _agent = target.GetComponent<NavMeshAgent>();
+        }
+
+        void OnEnable()
+        {
+            _mgr = ServiceLocator.Get<SaveManager>();
+            if (_mgr != null) _mgr.Register(this);
+        }
+
+        void OnDisable()
+        {
+            if (_mgr != null) _mgr.Unregister(this);
+        }
+
+        public void Capture(GameSave s)
+        {
+            if (s.player == null) s.player = new PlayerSave();
+            var p = target.position; var r = target.rotation;
+            s.player.x=p.x; s.player.y=p.y; s.player.z=p.z;
+            s.player.rx=r.x; s.player.ry=r.y; s.player.rz=r.z; s.player.rw=r.w;
+        }
+
+        public void Apply(GameSave s)
+        {
+            if (s?.player == null) return;
+
+            var pos = new Vector3(s.player.x,s.player.y,s.player.z);
+            var rot = new Quaternion(s.player.rx,s.player.ry,s.player.rz,s.player.rw);
+
+            if (useNavMeshAgentWarp && _agent && _agent.isOnNavMesh)
+            {
+                _agent.Warp(pos);
+                target.rotation = rot;
+            }
+            else
+            {
+                target.SetPositionAndRotation(pos, rot);
+            }
+        }
     }
 }

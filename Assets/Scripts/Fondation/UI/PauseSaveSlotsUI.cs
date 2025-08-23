@@ -1,50 +1,48 @@
+// Assets/Scripts/Fondation/UI/PauseSaveSlotsUI.cs
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using PathOfFaith.Fondation.Core;
-using PathOfFaith.Save;
+using PathOfFaith.Fondation.Core; // ServiceLocator
+using PathOfFaith.Save;           // SaveManager
 
-[DisallowMultipleComponent]
 public class PauseSaveSlotsUI : MonoBehaviour
 {
     [Header("Boutons slot 1..3 (dans l'ordre)")]
-    public Button[] slotButtons;          // 3 boutons
+    public Button[] slotButtons;
 
     [Header("Labels TMP_Text 1..3 (dans l'ordre)")]
-    public TMP_Text[] slotLabels;         // 3 labels (TMP)
+    public TMP_Text[] slotLabels;
 
-    ISaveService _save;
-    SaveManager  _mgr;
+    SaveManager _mgr;
 
     void Awake()
     {
-        _save = ServiceLocator.Get<ISaveService>();
-        _mgr  = ServiceLocator.Get<SaveManager>();
+        _mgr = ServiceLocator.Get<SaveManager>();
 
-        // câblage des clics
         for (int i = 0; i < slotButtons.Length; i++)
         {
-            int idx = i; // capture
-            if (slotButtons[i] != null)
+            int idx = i;
+            if (slotButtons[i])
                 slotButtons[i].onClick.AddListener(() => OnClickSlot(idx));
         }
     }
 
     void OnEnable() => Refresh();
 
-    // Doit être public (appelé depuis PauseMenuActions)
     public void Refresh()
     {
+        if (_mgr == null) return;
+
         for (int i = 0; i < 3; i++)
         {
             var slot = SlotIds.All[i];
-            var info = _mgr.GetInfo(slot);
+            var info = _mgr.GetInfo(slot); // (ok, savedAt, scene, version)
 
-            if (slotLabels != null && i < slotLabels.Length && slotLabels[i] != null)
+            if (slotLabels != null && i < slotLabels.Length && slotLabels[i])
             {
                 slotLabels[i].text = info.ok
-                    ? $"Slot {i + 1} • {info.scene} • {info.savedAt.ToLocalTime():yyyy-MM-dd HH:mm}"
-                    : $"Slot {i + 1} • (vide)";
+                    ? $"Slot {i+1} • {info.scene} • {info.savedAt.ToLocalTime():yyyy-MM-dd HH:mm}"
+                    : $"Slot {i+1} • (vide)";
             }
         }
     }
@@ -52,8 +50,8 @@ public class PauseSaveSlotsUI : MonoBehaviour
     void OnClickSlot(int idx)
     {
         var slot = SlotIds.All[idx];
-        _save.Save(slot);          // écrase si déjà présent
-        Refresh();                 // met à jour les libellés
-        gameObject.SetActive(false); // referme le panneau de slots
+        _mgr.Save(slot);    // écrase si déjà présent
+        Refresh();
+        gameObject.SetActive(false); // referme le picker
     }
 }

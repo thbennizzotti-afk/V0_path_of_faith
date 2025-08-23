@@ -4,85 +4,94 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     [Header("Références panneaux")]
-    [SerializeField] private GameObject rootPanel;      // UI_Pause (canvas racine de pause)
-    [SerializeField] private GameObject mainPanel;      // PauseManPanel (boutons Sauvegarder / Quitter)
-    [SerializeField] private GameObject saveSlotsPanel; // SaveSlotsPanel (choix de slot)
+    [SerializeField] GameObject rootPanel;      // ex: UI_Pause  (parent contenant tout le menu pause)
+    [SerializeField] GameObject mainPanel;      // ex: PauseMainPanel (boutons Sauvegarder / Quitter)
+    [SerializeField] GameObject saveSlotsPanel; // ex: SaveSlotsPanel  (liste des slots)
 
     [Header("Touche")]
-    [SerializeField] private KeyCode toggleKey = KeyCode.Escape;
+    public KeyCode toggleKey = KeyCode.Escape;
 
     public bool IsPaused => rootPanel != null && rootPanel.activeSelf;
 
-    private void Start()
+    void Start()
     {
-        // Démarrage propre
+        // État initial : menu fermé
         if (rootPanel) rootPanel.SetActive(false);
+        if (mainPanel) mainPanel.SetActive(false);
         if (saveSlotsPanel) saveSlotsPanel.SetActive(false);
-        if (mainPanel) mainPanel.SetActive(true);
-
-        // S’assure qu’on n’est pas figé au lancement
-        Time.timeScale = 1f;
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(toggleKey))
-            TogglePause();
-    }
-
-    /// <summary>Basculer l’état de pause.</summary>
-    public void TogglePause()
-    {
-        if (rootPanel == null) return;
-
-        if (!IsPaused)
         {
-            Pause();
-            return;
+            Debug.Log("[Pause] Escape pressed");
+            Toggle();
         }
+    }
 
-        // Déjà en pause : si on est sur les slots, revenir au menu principal,
-        // sinon reprendre le jeu.
-        if (saveSlotsPanel != null && saveSlotsPanel.activeSelf)
-            ShowMainPanel();
+    // ---------- Cycle principal ----------
+    public void Toggle()
+    {
+        if (!rootPanel) return;
+
+        if (!rootPanel.activeSelf)      // Ouvrir menu → panneau principal
+            OpenMain();
         else
-            Resume();
+            Close();                    // Fermer menu
     }
 
-    /// <summary>Ouvre la pause et affiche le panneau principal.</summary>
-    public void Pause()
+    public void OpenMain()
     {
-        if (rootPanel) rootPanel.SetActive(true);
-        ShowMainPanel();
+        Debug.Log("[Pause] OpenMain");
+        if (!rootPanel) return;
+
         Time.timeScale = 0f;
-    }
-
-    /// <summary>Ferme complètement la pause et relance le temps.</summary>
-    public void Resume()
-    {
-        if (rootPanel) rootPanel.SetActive(false);
-        Time.timeScale = 1f;
-    }
-
-    /// <summary>Affiche le panneau principal (Save / Quitter).</summary>
-    public void ShowMainPanel()
-    {
-        if (mainPanel) mainPanel.SetActive(true);
+        rootPanel.SetActive(true);
+        if (mainPanel)      mainPanel.SetActive(true);
         if (saveSlotsPanel) saveSlotsPanel.SetActive(false);
+
+        // Déverrouiller le curseur pour cliquer l’UI
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible   = true;
     }
 
-    /// <summary>Affiche le panneau des slots de sauvegarde.</summary>
-    public void ShowSaveSlots()
+    public void OpenSlots()
     {
-        if (mainPanel) mainPanel.SetActive(false);
+        Debug.Log("[Pause] OpenSlots");
+        if (!rootPanel) return;
+
+        Time.timeScale = 0f;
+        rootPanel.SetActive(true);
+        if (mainPanel)      mainPanel.SetActive(false);
         if (saveSlotsPanel) saveSlotsPanel.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible   = true;
     }
 
-    // Sécurité : si jamais ce GameObject est désactivé en étant en pause,
-    // on remet le timeScale à 1 pour ne pas “bloquer” l’éditeur/le jeu.
-    private void OnDisable()
+    public void Close()
     {
-        if (Time.timeScale == 0f)
-            Time.timeScale = 1f;
+        Debug.Log("[Pause] Close");
+        if (saveSlotsPanel) saveSlotsPanel.SetActive(false);
+        if (mainPanel)      mainPanel.SetActive(false);
+        if (rootPanel)      rootPanel.SetActive(false);
+
+        Time.timeScale = 1f;
+
+        // (optionnel) Re-verrouiller le curseur selon ton gameplay
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible   = false;
     }
+
+    // ---------- Méthodes de compatibilité (API attendue par tes autres scripts) ----------
+    public void Resume()          => Close();
+    public void ShowMainPanel()   => OpenMain();
+    public void ShowSaveSlots()   => OpenSlots();
+
+    // ---------- Affectations depuis l’Inspector ----------
+    // (helpers au cas où tu veux binder depuis d’autres scripts)
+    public void SetRoot(GameObject g)       => rootPanel = g;
+    public void SetMain(GameObject g)       => mainPanel = g;
+    public void SetSlots(GameObject g)      => saveSlotsPanel = g;
 }

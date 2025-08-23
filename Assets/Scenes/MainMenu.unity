@@ -1036,19 +1036,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 535155701}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1612632900}
-        m_TargetAssemblyTypeName: PathOfFaith.App.MainMenuUI, Assembly-CSharp
-        m_MethodName: OnClickNew_Slot1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &535155701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,6 +1383,7 @@ MonoBehaviour:
   - {fileID: 971290598}
   - {fileID: 291962297}
   - {fileID: 700314607}
+  gameSceneName: Game
 --- !u!114 &605863157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2092,19 +2081,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 911672606}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1612632900}
-        m_TargetAssemblyTypeName: PathOfFaith.App.MainMenuUI, Assembly-CSharp
-        m_MethodName: OnClickLoad_Slot1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &911672606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2531,6 +2508,10 @@ MonoBehaviour:
   loadGameButton: {fileID: 911672605}
   quitButton: {fileID: 0}
   loadSlotsPanel: {fileID: 605863155}
+  loadSlot1Button: {fileID: 533295846}
+  loadSlot2Button: {fileID: 621254663}
+  loadSlot3Button: {fileID: 885785498}
+  backFromSlotsButton: {fileID: 0}
 --- !u!4 &1612632901
 Transform:
   m_ObjectHideFlags: 0

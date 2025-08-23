@@ -1,3 +1,4 @@
+// Assets/Scripts/Fondation/Save/JsonSaveService.cs
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,17 +15,25 @@ namespace PathOfFaith.Save
         {
             if (!Directory.Exists(SavesDir)) Directory.CreateDirectory(SavesDir);
             data.savedAtTicks = DateTime.UtcNow.Ticks;
-            File.WriteAllText(GetPath(slot), JsonUtility.ToJson(data, true));
-#if UNITY_EDITOR
-            Debug.Log($"[Save] Wrote {GetPath(slot)}");
-#endif
+
+            var path = GetPath(slot);
+            var json = JsonUtility.ToJson(data, true);
+            File.WriteAllText(path, json);
+            Debug.Log($"[Save] Wrote {path}");
         }
 
         public bool TryLoad(string slot, out GameSave data)
         {
             var path = GetPath(slot);
-            if (!File.Exists(path)) { data = null; return false; }
-            data = JsonUtility.FromJson<GameSave>(File.ReadAllText(path));
+            if (!File.Exists(path))
+            {
+                data = null;
+                Debug.LogWarning($"[Save] No file at {path}");
+                return false;
+            }
+
+            var json = File.ReadAllText(path);
+            data = JsonUtility.FromJson<GameSave>(json);
             return data != null;
         }
 
